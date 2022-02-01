@@ -12,9 +12,9 @@ source(paste0(Usedir,"/Functions/Past2.0.R"))
 source(paste0(Usedir,"/Functions/WeightedAlignmentRouter.R"))
 
 #Define variables for running PAst:
-# output: outputdir , 
-# input: inputdir ,
-# osadb: osadb.fasta dir  
+# output: output directory
+# input: input directory
+# osadb: osadb.fasta directory  
 # blasted: TRUE/FALSE - omits blasting step if set to TRUE
 
 #Define these if not using original file structure
@@ -24,4 +24,4 @@ OsaDBdir <- paste0(Usedir,"/Functions/OSAdb.fasta")
 
 PAst(Outputdir,Inputdir, OsaDBdir, FALSE)
 
-#Output file will be saved to Outputdir with the suffix Serotyping3.0.txt
+#Output file will be saved to Outputdir with the suffix "_Serotyping.txt".

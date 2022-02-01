@@ -1,5 +1,5 @@
 #### PAst 
-#the Pseudomonas aeruginosa serotyper (PAst) v3
+#the Pseudomonas aeruginosa serotyper (PAst) v2
 
 #R conversion
 
@@ -151,7 +151,7 @@ PAst <- function(Output, Input, OSAdb, Blasted){
               if(identical("O2",Data$Subjacc[which(Data$Cover>95)])){
                 Type <- "O5"
               } else {
-                #Else we base it on the best result (highest bitscore)that has a cover > 95%
+                #Else we base it on the best result (highest coverage) that has a cover > 95%
                 Type <- Data$Subjacc[Data$Cover==max(Data$Cover) ]
               }
               
