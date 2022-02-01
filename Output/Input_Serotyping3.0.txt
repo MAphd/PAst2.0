@@ -1,0 +1,2 @@
+"Name" "Serotype" "Coverage" "Identity" "Row" "Besthit" "Fragments"
+"GCF_000006765.1_ASM676v1_genomic.fna" "O5" 100 99.78 "1" "O5" "1"
