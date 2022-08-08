@@ -9,7 +9,6 @@ PAst <- function(Output, Input, OSAdb, Blasted){
   
   # source("./WeightedAlignmentRouter.R")
 
-  library(readr)
   #accepted extension types .fasta, .fas, .fa, .seq, .fsa 
   #todo: Record a variable for the extension since we use it for naming later on and right now, just assume .fasta
 
@@ -79,7 +78,7 @@ PAst <- function(Output, Input, OSAdb, Blasted){
   Finaldata <- data.frame()
   for(i in 1:length(Seqnms)){
  # i <- 15
-    Data <- data.frame(read_delim(paste(Output, Blastnms,sep="")[i], delim="\t", col_names = c("Queryacc","Subjacc","Identity","Sstart","Send","Length","Evalue","Bitscore", "nident")))
+    Data <- suppressMessages(data.frame(read_delim(paste(Output, Blastnms,sep="")[i], delim="\t", col_names = c("Queryacc","Subjacc","Identity","Sstart","Send","Length","Evalue","Bitscore", "nident"))))
     #assume false to reset after each loop
     WzyB <- FALSE
 
@@ -232,11 +231,11 @@ PAst <- function(Output, Input, OSAdb, Blasted){
   Finaldata$Identity <- round(as.numeric(as.vector(Finaldata$Identity)), digits= 2 )
   Finaldata$Coverage <- round(as.numeric(as.vector(Finaldata$Coverage)), digits= 2 )
   
-  write.table(Finaldata, file=paste(Output,gsub("/","",strsplit(Input,dirname(Input))[[1]][2]),"_Serotyping.txt",sep=""),row.names=FALSE)
+  write.table(Finaldata, file=paste(Output,basename(Input),"_Serotyping.txt",sep=""),row.names=FALSE)
        
    
   # print(Finaldata)
-  print(paste("Report saved to ",Output,gsub("/","",strsplit(Input,dirname(Input))[[1]][2]),"_Serotyping.txt",sep=""))
+  print(paste("Report saved to ",Output,basename(Input),"_Serotyping.txt",sep=""))
   
   
   Finaldata 

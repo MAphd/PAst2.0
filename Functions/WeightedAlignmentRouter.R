@@ -1,10 +1,6 @@
 
 
 
-library(readr)
-
-
-
 WeightedAlignementRouter <- function(Blastlist){
 
 
