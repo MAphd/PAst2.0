@@ -4,6 +4,18 @@
 dargs <- list(i = "", o = "", b = FALSE)
 Param <- R.utils::commandArgs(defaults = dargs, trailingOnly = FALSE, always = list(file =""), asValues = TRUE)
 
+#Help message
+if( any(names(Param) %in% c("h","help") ) ){
+  cat("PAst 2.0, a blast based tool for in silico serotyping of pseudomonas aeruginosa genomes\n
+Available commands:\n")
+  cat("-i Input genome(s) directory path Defaults to ./input/ in PAst2.0 folder if not specified
+-o Output directory path (defaults to . if not specified)
+-b (If you already previously performed the blast alignment for debugging purposes, defaults to FALSE)
+-p (To enable installation of missing packages required to run script)
+-h or -help Display this message\n")
+  q()
+  
+}
 #Set correct path for some functions
 DIR2 <- dirname((Param$file))
 
@@ -25,18 +37,7 @@ source(paste0(DIR3,"Functions/PAst2.0.R"))
 source(paste0(DIR3,"Functions/WeightedAlignmentRouter.R"))
 
 
-#Help message
-if( any(names(Param) %in% c("h","help") ) ){
-  cat("PAst 2.0, a blast based tool for in silico serotyping of pseudomonas aeruginosa genomes\n
-Available commands:\n")
-  cat("-i Input genome(s) directory path Defaults to ./input/ in PAst2.0 folder if not specified
--o Output directory path (defaults to . if not specified)
--b (If you already previously performed the blast alignment for debugging purposes, defaults to FALSE)
--p (To enable installation of missing packages required to run script)
--h or -help Display this message\n")
-  q()
-  
-}
+
 
 packages <- c("readr")
 
@@ -72,17 +73,25 @@ if( !identical( Param$i, "" ) ){
 } else {
   dInputquery <- paste0(DIR3,"Input/")
   
-  if( identical(list.files(dInputquery ,pattern = paste0(c("*fasta$","*fna$","*fsa$","*fas$","*fa$","*seq$"),collapse="|")), "as.character(0)") ){
-    stop("Input folder has no valid files, input files must have file extension: .fasta, .fna, .fsa, .fas, .fa, or .seq")
-    # print(dOutput)
-  }
+
   
 }
-#Trailing slash to input
 if( ! grepl("/$",dInputquery) ){
   dInputquery <- paste0(dInputquery, "/")
   
 }
+
+# print(dInputquery)
+# print(list.files(dInputquery))
+
+# print(identical(list.files(dInputquery, pattern = paste0(c("fasta$","fna$","fsa$","fas$","fa$","seq$"),collapse="|") ),character(0)))
+
+if( identical(list.files(dInputquery, pattern = paste0(c("fasta$","fna$","fsa$","fas$","fa$","seq$"),collapse="|") ),character(0)) ){
+  stop("Input folder has no valid files, input files must have file extension: .fasta, .fna, .fsa, .fas, .fa, or .seq")
+  # print(dOutput)
+}
+
+#Trailing slash to input
 
 
 
