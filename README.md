@@ -30,6 +30,9 @@ Required R packages:
 
 Has been tested using Rscript 3.6.3 for Ubuntu 20.04 with blastn 2.9.0
 
+Citation Anbo M, Jelsbak L. 2023. A bittersweet fate: detection of serotype switching in Pseudomonas aeruginosa. Microb Genomics 9:000919. https://doi.org/10.1099/mgen.0.000919
+
+
 ```
 [1] Thrane SW, Taylor VL, Lund O, Lam JS, Jelsbak L. Application of Whole-Genome Sequencing Data for O-Specific Antigen Analysis and In Silico Serotyping of Pseudomonas aeruginosa Isolates. J Clin Microbiol. 2016 Jul;54(7):1782-1788. doi: 10.1128/JCM.00349-16. Epub 2016 Apr 20. PMID: 27098958; PMCID: PMC4922119.
 ```
